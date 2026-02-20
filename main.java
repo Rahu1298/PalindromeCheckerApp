@@ -11,7 +11,7 @@ public class main {
         String reversed = "";
 
         for (int i = word.length() - 1; i >= 0; i--) {
-            reversed = reversed + word.charAt(i);
+            reversed = reversed + word.charAt(i);//string concatenation using + operator
         }
 
         // Conditional Statement (if-else)
