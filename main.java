@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class main {
     public static void main ( String [] args ) {
         System.out.println("Welcome to the Palindrome Checker Management System!");
@@ -8,14 +10,39 @@ public class main {
         String word = "madam";
 
         // Reverse the string
-        String reversed = "";
+        // String reversed = "";
 
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversed = reversed + word.charAt(i);
-        }
+        // for (int i = word.length() - 1; i >= 0; i--) {
+        //     reversed = reversed + word.charAt(i);
+        // }
 
         // Conditional Statement (if-else)
-        if (word.equals(reversed)) {
+        // if (word.equals(reversed)) {
+        //     System.out.println(word + " is a Palindrome");
+        // } else {
+        //     System.out.println(word + " is NOT a Palindrome");
+        // }
+
+        Stack<Character> stack = new Stack<>();
+
+        // Push characters into stack
+        for (int i = 0; i < word.length(); i++) {
+            stack.push(word.charAt(i));
+        }
+
+        boolean isPalindrome = true;
+
+        // Pop and compare
+        for (int i = 0; i < word.length(); i++) {
+            char poppedChar = stack.pop();
+
+            if (word.charAt(i) != poppedChar) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        if (isPalindrome) {
             System.out.println(word + " is a Palindrome");
         } else {
             System.out.println(word + " is NOT a Palindrome");
