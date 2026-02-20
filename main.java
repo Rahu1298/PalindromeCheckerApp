@@ -1,6 +1,9 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+// import java.util.LinkedList;
+// import java.util.Queue;
+// import java.util.Stack;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class main {
     public static void main ( String [] args ) {
@@ -49,25 +52,52 @@ public class main {
         // } else {
         //     System.out.println(word + " is NOT a Palindrome");
             
-         Stack<Character> stack = new Stack<>();
-        Queue<Character> queue = new LinkedList<>();
+        //  Stack<Character> stack = new Stack<>();
+        // Queue<Character> queue = new LinkedList<>();
 
-        // Step 1: Push into stack & Enqueue into queue
+        // // Step 1: Push into stack & Enqueue into queue
+        // for (int i = 0; i < word.length(); i++) {
+        //     char ch = word.charAt(i);
+        //     stack.push(ch);      // LIFO
+        //     queue.add(ch);       // FIFO
+        // }
+
+        // boolean isPalindrome = true;
+
+        // // Step 2: Compare pop (stack) with dequeue (queue)
+        // while (!stack.isEmpty()) {
+
+        //     char fromStack = stack.pop();      // Reverse order
+        //     char fromQueue = queue.remove();   // Original order
+
+        //     if (fromStack != fromQueue) {
+        //         isPalindrome = false;
+        //         break;
+        //     }
+        // }
+
+        // if (isPalindrome) {
+        //     System.out.println(word + " is a Palindrome");
+        // } else {
+        //     System.out.println(word + " is NOT a Palindrome");
+        // }
+
+        Deque<Character> deque = new ArrayDeque<>();
+
+        // Step 1: Insert characters into deque
         for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
-            stack.push(ch);      // LIFO
-            queue.add(ch);       // FIFO
+            deque.addLast(word.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        // Step 2: Compare pop (stack) with dequeue (queue)
-        while (!stack.isEmpty()) {
+        // Step 2: Compare front and rear
+        while (deque.size() > 1) {
 
-            char fromStack = stack.pop();      // Reverse order
-            char fromQueue = queue.remove();   // Original order
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
 
-            if (fromStack != fromQueue) {
+            if (front != rear) {
                 isPalindrome = false;
                 break;
             }
@@ -78,6 +108,7 @@ public class main {
         } else {
             System.out.println(word + " is NOT a Palindrome");
         }
+
 
         }
     }
